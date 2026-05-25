@@ -18,11 +18,11 @@ export function ScaledMockup({ designWidth, children }: { designWidth: number; c
   }, [designWidth]);
 
   return (
-    <div ref={outerRef} className="relative w-full h-full overflow-hidden">
+    <div ref={outerRef} className="relative w-full h-full flex items-center justify-center overflow-hidden">
       <div
         style={{
           width: designWidth,
-          transformOrigin: "top left",
+          transformOrigin: "center center",
           transform: `scale(${scale})`,
         }}
       >

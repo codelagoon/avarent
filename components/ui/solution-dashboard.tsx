@@ -46,9 +46,9 @@ const recent = [
 ];
 
 const outcomeColor: Record<string, string> = {
-  Approved: "text-emerald-400",
-  Declined:  "text-red-400",
-  Review:    "text-amber-400",
+  Approved: "text-white",
+  Declined:  "text-white/60",
+  Review:    "text-[#C45C00]",
 };
 
 export function SolutionDashboard() {
@@ -59,12 +59,12 @@ export function SolutionDashboard() {
       <div className="w-[28%] border-r border-white/5 flex flex-col p-4 gap-3">
         <div className="flex items-center justify-between shrink-0">
           <span className="text-[10px] font-semibold text-white/60 uppercase tracking-widest">Explanation</span>
-          <span className="text-[9px] bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded-full">APP-0044</span>
+          <span className="text-[9px] bg-white/10 text-white/60 px-2 py-0.5 rounded-full whitespace-nowrap">APP-0044</span>
         </div>
 
         <div className="bg-zinc-900 rounded-lg border border-white/5 p-3 shrink-0">
           <div className="text-[9px] text-white/40 mb-1">Decision</div>
-          <div className="text-amber-400 font-semibold text-sm">Under Review</div>
+          <div className="text-white font-semibold text-sm">Under Review</div>
           <div className="text-[9px] text-white/30 mt-0.5">Confidence 63% · Score 541</div>
         </div>
 
@@ -73,14 +73,14 @@ export function SolutionDashboard() {
           {features.map((f) => (
             <div key={f.label} className="flex flex-col gap-0.5">
               <div className="flex justify-between text-[8px]">
-                <span className="text-white/60">{f.label}</span>
-                <span className={f.direction === "neg" ? "text-red-400" : "text-emerald-400"}>
+                <span className="text-white/60 whitespace-nowrap">{f.label}</span>
+                <span className="text-white/40 whitespace-nowrap">
                   {f.direction === "neg" ? "↓" : "↑"} {f.value}%
                 </span>
               </div>
               <div className="w-full bg-white/5 rounded-full h-1 overflow-hidden">
                 <motion.div
-                  className={`h-full rounded-full ${f.direction === "neg" ? "bg-red-500/60" : "bg-emerald-500/60"}`}
+                  className="h-full rounded-full bg-white/30"
                   initial={{ width: 0 }}
                   whileInView={{ width: `${f.value}%` }}
                   viewport={{ once: true }}
@@ -103,26 +103,26 @@ export function SolutionDashboard() {
           {segments.map((s) => (
             <div key={s.label} className="bg-zinc-900 rounded-lg border border-white/5 p-3">
               <div className="flex justify-between mb-2">
-                <span className="text-[10px] font-medium text-white/70">{s.label}</span>
+                <span className="text-[10px] font-medium text-white/70 whitespace-nowrap">{s.label}</span>
                 <div className="flex gap-3 text-[8px] text-white/40">
-                  <span className="text-emerald-400">{s.pass}% pass</span>
-                  <span className="text-amber-400">{s.review}% review</span>
-                  <span className="text-red-400">{s.decline}% decline</span>
+                  <span className="whitespace-nowrap">{s.pass}% pass</span>
+                  <span className="text-[#C45C00] whitespace-nowrap">{s.review}% review</span>
+                  <span className="whitespace-nowrap">{s.decline}% decline</span>
                 </div>
               </div>
               <div className="flex w-full h-1.5 rounded-full overflow-hidden gap-px">
-                <motion.div className="bg-emerald-500/70 rounded-l-full" initial={{ width: 0 }} whileInView={{ width: `${s.pass}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: segments.indexOf(s) * 0.1, ease: "easeOut" }} />
-                <motion.div className="bg-amber-500/70" initial={{ width: 0 }} whileInView={{ width: `${s.review}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: segments.indexOf(s) * 0.1 + 0.05, ease: "easeOut" }} />
-                <motion.div className="bg-red-500/70 rounded-r-full" initial={{ width: 0 }} whileInView={{ width: `${s.decline}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: segments.indexOf(s) * 0.1 + 0.1, ease: "easeOut" }} />
+                <motion.div className="bg-white/40 rounded-l-full" initial={{ width: 0 }} whileInView={{ width: `${s.pass}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: segments.indexOf(s) * 0.1, ease: "easeOut" }} />
+                <motion.div className="bg-[#C45C00]/70" initial={{ width: 0 }} whileInView={{ width: `${s.review}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: segments.indexOf(s) * 0.1 + 0.05, ease: "easeOut" }} />
+                <motion.div className="bg-white/20 rounded-r-full" initial={{ width: 0 }} whileInView={{ width: `${s.decline}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: segments.indexOf(s) * 0.1 + 0.1, ease: "easeOut" }} />
               </div>
             </div>
           ))}
         </div>
 
         {/* Disparate Impact indicator */}
-        <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-2 shrink-0">
+        <div className="bg-[#C45C00]/10 border border-[#C45C00]/20 rounded-lg p-2 shrink-0">
           <div className="flex items-center justify-between">
-            <span className="text-[9px] text-amber-400 font-medium">⚠ Disparate Impact Detected</span>
+            <span className="text-[9px] text-[#C45C00] font-medium">Disparate Impact Detected</span>
             <span className="text-[8px] text-white/30">Thin File vs Prime</span>
           </div>
           <div className="text-[8px] text-white/40 mt-1">Approval rate ratio 0.61 — below 0.80 EEOC threshold</div>
@@ -138,15 +138,15 @@ export function SolutionDashboard() {
 
         <div className="flex flex-col gap-1.5 flex-1 min-h-0 overflow-hidden">
           {recent.map((r) => (
-            <div key={r.id} className={`flex items-center justify-between px-3 py-2 rounded-lg bg-zinc-900 border ${r.flag ? "border-amber-500/30" : "border-white/5"}`}>
+            <div key={r.id} className={`flex items-center justify-between px-3 py-2 rounded-lg bg-zinc-900 border ${r.flag ? "border-[#C45C00]/30" : "border-white/5"}`}>
               <div className="flex items-center gap-2">
-                {r.flag && <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />}
+                {r.flag && <span className="w-1.5 h-1.5 rounded-full bg-[#C45C00] shrink-0" />}
                 {!r.flag && <span className="w-1.5 h-1.5 rounded-full bg-white/10 shrink-0" />}
-                <span className="text-[9px] text-white/50 font-mono">{r.id}</span>
+                <span className="text-[9px] text-white/50 font-mono whitespace-nowrap">{r.id}</span>
               </div>
-              <span className="text-[9px] text-white/30">{r.score}</span>
-              <span className={`text-[9px] font-medium ${outcomeColor[r.outcome]}`}>{r.outcome}</span>
-              <span className="text-[9px] text-white/30">{r.conf}</span>
+              <span className="text-[9px] text-white/30 whitespace-nowrap">{r.score}</span>
+              <span className={`text-[9px] font-medium whitespace-nowrap ${outcomeColor[r.outcome]}`}>{r.outcome}</span>
+              <span className="text-[9px] text-white/30 whitespace-nowrap">{r.conf}</span>
             </div>
           ))}
         </div>
@@ -155,15 +155,15 @@ export function SolutionDashboard() {
           <div className="text-[9px] text-white/40 mb-2">Today&apos;s summary</div>
           <div className="grid grid-cols-3 gap-2 text-center">
             <div>
-              <div className="text-emerald-400 font-semibold text-xs"><CountUp target={1842} /></div>
+              <div className="text-white font-semibold text-xs"><CountUp target={1842} /></div>
               <div className="text-[8px] text-white/30">Approved</div>
             </div>
             <div>
-              <div className="text-amber-400 font-semibold text-xs"><CountUp target={312} /></div>
+              <div className="text-[#C45C00] font-semibold text-xs"><CountUp target={312} /></div>
               <div className="text-[8px] text-white/30">Review</div>
             </div>
             <div>
-              <div className="text-red-400 font-semibold text-xs"><CountUp target={693} /></div>
+              <div className="text-white/60 font-semibold text-xs"><CountUp target={693} /></div>
               <div className="text-[8px] text-white/30">Declined</div>
             </div>
           </div>
