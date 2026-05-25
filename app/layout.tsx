@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   description: "Avarent turns the decision records you already collect into a structured evidence packet for fair lending compliance. No direct model access required, no raw PII storage.",
   keywords: ["fair lending", "compliance", "evidence packet", "regulatory exam", "disparity metrics", "adverse action", "Reg B"],
   authors: [{ name: "Avarent" }],
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     title: "Avarent - Fair Lending Compliance Evidence Automation",
     description: "Turn decision records into structured evidence packets for fair lending compliance. No direct model access required.",
