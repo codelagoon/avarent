@@ -25,13 +25,6 @@ export default function Home() {
       <CalEmbed />
       <WaitlistModal />
       <HeroSection
-        badge={{
-          text: "Introducing our new components",
-          action: {
-            text: "Learn more",
-            href: "/docs",
-          },
-        }}
         title="See what your decision data already shows."
         description="Compliance teams currently assemble fair-lending evidence by hand — pulling exports from systems they do not own, arriving at exams with gaps they did not know existed. Avarent turns the decision records you already collect into a structured evidence packet, without requiring direct model access or storing raw applicant PII."
         actions={[

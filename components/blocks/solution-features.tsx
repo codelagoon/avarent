@@ -25,7 +25,7 @@ export function SolutionFeatures() {
         <div className="relative rounded-3xl p-3 md:-mx-8">
           <div className="relative overflow-hidden rounded-2xl h-auto">
             <div className="bg-gradient-to-t z-20 from-background absolute bottom-0 left-0 right-0 h-16 pointer-events-none" />
-            <ScaledMockup designWidth={900}>
+            <ScaledMockup designWidth={600}>
               <SolutionDashboard />
             </ScaledMockup>
           </div>
