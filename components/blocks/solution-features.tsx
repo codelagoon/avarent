@@ -22,16 +22,13 @@ export function SolutionFeatures() {
         </motion.div>
 
         <motion.div
-          className="relative md:-mx-4 lg:-mx-8"
+          className="relative mx-auto w-full"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
         >
-          <div className="relative overflow-hidden rounded-2xl">
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-20 hidden h-12 bg-gradient-to-t from-background to-transparent md:block" />
-            <SolutionDashboard />
-          </div>
+          <SolutionDashboard />
         </motion.div>
       </div>
     </section>

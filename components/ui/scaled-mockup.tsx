@@ -18,10 +18,14 @@ export function ScaledMockup({
 }: ScaledMockupProps) {
   return (
     <div
-      className={cn("w-full overflow-hidden [container-type:inline-size]", className)}
+      className={cn(
+        "relative mx-auto w-full overflow-hidden [container-type:inline-size]",
+        className
+      )}
       style={{ aspectRatio: `${designWidth} / ${designHeight}` }}
     >
       <div
+        className="absolute left-0 top-0"
         style={{
           width: designWidth,
           height: designHeight,
