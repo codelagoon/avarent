@@ -55,31 +55,34 @@ export function HeroParallax({ products, title, description, actions }: HeroPara
   const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.25], [5, 0]), springConfig);
   const opacity = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.85, 1]), springConfig);
   const rotateZ = useSpring(useTransform(scrollYProgress, [0, 0.25], [4, 0]), springConfig);
-  const translateY = useSpring(useTransform(scrollYProgress, [0, 0.25], [-80, 200]), springConfig);
-  const trustOpacity = useSpring(useTransform(scrollYProgress, [0.14, 0.28], [0, 1]), springConfig);
+  const translateY = useSpring(useTransform(scrollYProgress, [0, 0.25], [-60, 80]), springConfig);
+  const trustOpacity = useSpring(
+    useTransform(scrollYProgress, [0.14, 0.22, 0.32, 0.4], [0, 1, 1, 0]),
+    springConfig
+  );
   const trustY = useSpring(useTransform(scrollYProgress, [0.14, 0.28], [16, 0]), springConfig);
 
   return (
     <div
       ref={ref}
-      className="relative flex h-[180vh] flex-col overflow-x-clip bg-[#0A0A0A] antialiased [perspective:1200px] [transform-style:preserve-3d] md:h-[230vh]"
+      className="relative z-[1] flex h-[190vh] flex-col overflow-x-clip bg-[#0A0A0A] antialiased [perspective:1200px] [transform-style:preserve-3d] md:h-[240vh]"
     >
       <HeroParallaxBackground />
 
-      <div className="relative z-10 flex flex-col overflow-visible pt-20 pb-24 md:pt-28 md:pb-36">
+      <div className="relative z-10 flex flex-col overflow-visible pt-20 pb-32 md:pt-28 md:pb-40">
         <HeroParallaxHeader title={title} description={description} actions={actions} />
 
         <motion.div
           style={{ rotateX, rotateZ, translateY, opacity }}
-          className="relative mt-8 min-h-[70rem] overflow-visible pb-8 [transform-origin:center_top] md:mt-10 md:min-h-[84rem] md:pb-12"
+          className="relative mt-8 min-h-[52rem] overflow-visible pb-8 [transform-origin:center_top] md:mt-10 md:min-h-[94rem] md:pb-12"
         >
           <ParallaxRow products={firstRow} translate={translateXReverse} reverse />
           <ParallaxRow products={secondRow} translate={translateX} className="my-6 md:my-8" />
           <ParallaxRow products={thirdRow} translate={translateXReverse} reverse className="hidden md:block" />
         </motion.div>
-      </div>
 
-      <HeroTrustRow opacity={trustOpacity} y={trustY} />
+        <HeroTrustRow opacity={trustOpacity} y={trustY} />
+      </div>
 
       <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-40 bg-gradient-to-b from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-32 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/70 to-transparent md:h-40" />
@@ -176,7 +179,7 @@ function HeroTrustRow({
   return (
     <motion.div
       style={{ opacity, y }}
-      className="pointer-events-none absolute inset-x-0 bottom-16 z-30 px-4 md:bottom-20"
+      className="pointer-events-none relative mb-8 mt-10 px-4 md:mb-10 md:mt-12"
     >
       <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-x-6 gap-y-3">
         {trustItems.map(({ icon: Icon, label }) => (

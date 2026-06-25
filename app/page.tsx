@@ -12,9 +12,11 @@ import { CalEmbed, CAL_DATA } from "@/components/ui/cal-embed";
 import { WaitlistModal } from "@/components/ui/waitlist-modal";
 import { ContactSalesModal } from "@/components/ui/contact-sales-modal";
 
-function Blend() {
+function Blend({ pull = true }: { pull?: boolean }) {
   return (
-    <div className="relative -my-16 pointer-events-none z-10 h-32">
+    <div
+      className={`relative pointer-events-none z-10 h-32${pull ? " -my-16" : ""}`}
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background to-transparent" />
     </div>
   );
@@ -43,7 +45,7 @@ export default function Home() {
           },
         ]}
       />
-      <Blend />
+      <Blend pull={false} />
       <RegulatoryRiskSection />
       <Blend />
       <SolutionFeatures />

@@ -32,7 +32,7 @@ const cards = [
 
 export function RegulatoryRiskSection() {
   return (
-    <section className="bg-background text-foreground px-4 pb-20 pt-36 md:pb-32 md:pt-48">
+    <section className="relative z-20 bg-background text-foreground px-4 pb-20 pt-24 md:pb-32 md:pt-32">
       <div className="mx-auto max-w-[var(--max-w-container)]">
         <motion.div
           className="mx-auto mb-12 max-w-3xl text-center md:mb-16"
