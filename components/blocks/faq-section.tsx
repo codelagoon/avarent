@@ -1,61 +1,40 @@
 import { FAQ } from "@/components/ui/faq-tabs";
 
 const categories = {
-  product:    "The Product",
-  analysis:   "Analysis & Data",
-  access:     "Access & Fit",
+  general: "General",
 };
 
 const faqData = {
-  product: [
+  general: [
     {
-      question: "Does Avarent require direct access to our credit model?",
+      question: "How long does implementation take?",
       answer:
-        "No. Avarent works from decision-level outputs and logs — it does not require API access to the model itself, model weights, or the underlying scoring engine.",
+        "Most teams complete data ingestion and see initial monitoring within one week. Scoping and integration planning typically take a single working session.",
     },
     {
-      question: "Is this a determination of discrimination or compliance?",
+      question: "Does Avarent replace our underwriting models?",
       answer:
-        "No. Avarent produces statistical analysis and structured documentation — it is not legal review, does not make compliance determinations, and its outputs do not constitute legal advice.",
+        "No. Avarent works from decision-level outputs and logs. It does not require API access to the model itself, model weights, or the underlying scoring engine.",
     },
     {
-      question: "What analyses are included?",
+      question: "How does Avarent detect disparate impact?",
       answer:
-        "Disparate impact analysis against the four-fifths rule. Proxy-risk variable flagging for compliance review. Adverse action reason-code validation against Reg B and CFPB Circular 2023-03. Drift monitoring across origination periods. Methodology documentation structured for MRM exam teams.",
+        "Avarent calculates approval-rate disparity and the disparate impact ratio against the four-fifths threshold, with plain-language labels alongside technical outputs. Alerts surface when cohort metrics cross configured thresholds.",
     },
-  ],
-  analysis: [
     {
-      question: "What data do you store?",
+      question: "How does demographic inference work?",
+      answer:
+        "Avarent assigns protected-class cohorts from decision-level attributes already present in your lending data. Analysis runs on aggregate cohort records — not raw applicant PII.",
+    },
+    {
+      question: "How does Avarent prepare institutions for CFPB examinations?",
+      answer:
+        "Open findings, methodology references, investigation logs, and adverse action documentation are compiled into a structured evidence packet formatted for MRM and fair-lending exam teams.",
+    },
+    {
+      question: "Does Avarent store applicant data?",
       answer:
         "Avarent stores decision-level and cohort-level records only. No raw applicant PII. No bureau data. No model weights.",
-    },
-    {
-      question: "How does data get into Avarent?",
-      answer:
-        "Avarent supports batch file upload (CSV, Parquet, JSON), real-time event streaming via webhook or Kafka, and direct connectors for Snowflake, BigQuery, and Redshift.",
-    },
-    {
-      question: "How does the analysis readiness score work?",
-      answer:
-        "Before any analysis runs, Avarent maps your ingested fields against the statistical tests in scope and flags which analyses are fully supported, partially supported, or blocked by missing data — so there are no surprises when presenting to leadership.",
-    },
-  ],
-  access: [
-    {
-      question: "Who is Avarent built for?",
-      answer:
-        "Compliance officers, fair-lending counsel, and model risk teams at regional banks and fintechs running automated underwriting. Avarent is not designed for community banks doing manual review or mortgage-only lenders with existing HMDA infrastructure.",
-    },
-    {
-      question: "Can we try it before committing?",
-      answer:
-        "Yes, via the pilot tier. The pilot provides access to the full analysis suite on a scoped data sample with a structured readout of findings. Access is available through the waitlist — book a call with the founder to get a pilot scoped.",
-    },
-    {
-      question: "How quickly can we get up and running?",
-      answer:
-        "Most teams complete data ingestion and see initial analysis within one week. The pilot scoping call takes 30 minutes.",
     },
   ],
 };
@@ -67,7 +46,7 @@ export function FAQSection() {
       subtitle="Got questions?"
       categories={categories}
       faqData={faqData}
-      className="py-12 md:py-20"
+      className="py-20 md:py-32"
     />
   );
 }

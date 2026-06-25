@@ -47,10 +47,12 @@ interface CTAWithTextMarqueeProps {
   description: string;
   primaryLabel: string;
   primaryHref: string;
+  primaryCalData?: Record<string, string>;
   secondaryLabel: string;
   secondaryHref: string;
   secondaryCalData?: Record<string, string>;
   onPrimaryClick?: () => void;
+  onSecondaryClick?: () => void;
   marqueeItems: string[];
   speed?: number;
 }
@@ -60,10 +62,12 @@ export function CTAWithTextMarquee({
   description,
   primaryLabel,
   primaryHref,
+  primaryCalData,
   secondaryLabel,
   secondaryHref,
   secondaryCalData,
   onPrimaryClick,
+  onSecondaryClick,
   marqueeItems,
   speed = 35,
 }: CTAWithTextMarqueeProps) {
@@ -101,15 +105,24 @@ export function CTAWithTextMarquee({
         </p>
         <div className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center w-full sm:w-auto">
           <a
-            href={onPrimaryClick ? "#" : primaryHref}
+            href={primaryCalData || onPrimaryClick ? "#" : primaryHref}
             onClick={onPrimaryClick ? (e) => { e.preventDefault(); onPrimaryClick(); } : undefined}
             className="group relative px-5 py-2.5 bg-foreground text-background rounded-md text-sm font-medium overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            {...(primaryCalData ?? {})}
           >
             <span className="relative z-10">{primaryLabel}</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
           </a>
           <a
-            href={secondaryCalData ? "#" : secondaryHref}
+            href={secondaryCalData || onSecondaryClick ? "#" : secondaryHref}
+            onClick={
+              onSecondaryClick
+                ? (e) => {
+                    e.preventDefault();
+                    onSecondaryClick();
+                  }
+                : undefined
+            }
             className="group relative px-5 py-2.5 bg-transparent text-foreground rounded-md text-sm font-medium overflow-hidden transition-all duration-300 hover:scale-105 border border-border hover:border-foreground/30"
             {...(secondaryCalData ?? {})}
           >

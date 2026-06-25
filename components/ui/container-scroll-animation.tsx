@@ -8,12 +8,14 @@ export const ContainerScroll = ({
   cardClassName,
   cardInnerClassName,
   containerClassName,
+  motionless = false,
 }: {
   titleComponent: string | React.ReactNode;
   children: React.ReactNode;
   cardClassName?: string;
   cardInnerClassName?: string;
   containerClassName?: string;
+  motionless?: boolean;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -38,9 +40,9 @@ export const ContainerScroll = ({
 
   const springConfig = { stiffness: 60, damping: 20, mass: 0.8 };
 
-  const rotateRaw = useTransform(scrollYProgress, [0, 1], [15, 0]);
-  const scaleRaw = useTransform(scrollYProgress, [0, 1], scaleDimensions());
-  const translateRaw = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const rotateRaw = useTransform(scrollYProgress, [0, 1], motionless ? [0, 0] : [8, 0]);
+  const scaleRaw = useTransform(scrollYProgress, [0, 1], motionless ? [1, 1] : scaleDimensions());
+  const translateRaw = useTransform(scrollYProgress, [0, 1], motionless ? [0, 0] : [0, -80]);
 
   const rotate = useSpring(rotateRaw, springConfig);
   const scale = useSpring(scaleRaw, springConfig);
@@ -97,10 +99,10 @@ export const Card = ({
         boxShadow:
           "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
       }}
-      className={`max-w-5xl -mt-12 mx-auto aspect-video md:h-[40rem] md:aspect-auto w-full border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px] shadow-2xl origin-top${className ? ` ${className}` : ''}`}
+      className={`max-w-5xl -mt-12 mx-auto aspect-video md:h-[40rem] md:aspect-auto w-full border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px] shadow-2xl origin-top will-change-transform [backface-visibility:hidden]${className ? ` ${className}` : ''}`}
     >
       <div className={`h-full w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl md:p-4${innerClassName ? ` ${innerClassName}` : ''}`}>
-        <div className="w-[64rem] h-[36rem] scale-[0.36] origin-top-left md:w-full md:h-full md:scale-100 md:origin-center">
+        <div className="w-full h-full min-h-0">
           {children}
         </div>
       </div>

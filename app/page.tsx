@@ -1,19 +1,20 @@
 "use client";
 
 import { HeroSection } from "@/components/blocks/hero-section";
-import { ProblemSection } from "@/components/blocks/problem-section";
-import { CTASection } from "@/components/blocks/cta-section";
-import { FAQSection } from "@/components/blocks/faq-section";
-import { SocialProofBridge } from "@/components/blocks/social-proof-bridge";
+import { RegulatoryRiskSection } from "@/components/blocks/regulatory-risk-section";
 import { SolutionFeatures } from "@/components/blocks/solution-features";
+import { HowItWorksSection } from "@/components/blocks/how-it-works-section";
 import { SolutionSection } from "@/components/blocks/solution-section";
-import { Icons } from "@/components/ui/icons";
+import { MetricsSection } from "@/components/blocks/metrics-section";
+import { FAQSection } from "@/components/blocks/faq-section";
+import { CTASection } from "@/components/blocks/cta-section";
 import { CalEmbed, CAL_DATA } from "@/components/ui/cal-embed";
 import { WaitlistModal } from "@/components/ui/waitlist-modal";
+import { ContactSalesModal } from "@/components/ui/contact-sales-modal";
 
 function Blend() {
   return (
-    <div className="relative h-32 pointer-events-none -mt-16 -mb-16 z-10">
+    <div className="relative -my-16 pointer-events-none z-10 h-32">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background to-transparent" />
     </div>
   );
@@ -24,32 +25,34 @@ export default function Home() {
     <div className="relative bg-background">
       <CalEmbed />
       <WaitlistModal />
+      <ContactSalesModal />
       <HeroSection
-        title="See what your decision data already shows."
-        description="Compliance teams currently assemble fair-lending evidence by hand — pulling exports from systems they do not own, arriving at exams with gaps they did not know existed. Avarent turns the decision records you already collect into a structured evidence packet, without requiring direct model access or storing raw applicant PII."
+        title="Monitor every AI lending decision before regulators do."
+        description="Avarent continuously monitors AI-powered lending decisions, detects disparate impact in real time, generates compliant adverse action notices, and prepares your institution for CFPB examinations without replacing your existing models."
         actions={[
           {
-            text: "Join the Waitlist",
+            text: "Book a Demo",
             href: "#",
             variant: "default",
-            onClick: () => window.dispatchEvent(new CustomEvent("open-waitlist")),
+            calData: CAL_DATA,
           },
           {
-            text: "Book a Call with the Founder",
-            href: "#",
+            text: "View Platform",
+            href: "#platform",
             variant: "glow",
-            calData: CAL_DATA,
           },
         ]}
       />
       <Blend />
-      <ProblemSection />
+      <RegulatoryRiskSection />
       <Blend />
       <SolutionFeatures />
       <Blend />
+      <HowItWorksSection />
+      <Blend />
       <SolutionSection />
       <Blend />
-      <SocialProofBridge />
+      <MetricsSection />
       <Blend />
       <FAQSection />
       <Blend />

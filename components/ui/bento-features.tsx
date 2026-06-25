@@ -60,7 +60,7 @@ export function BentoFeatures() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-            Built for Fair Lending
+            Purpose-built for modern AI governance.
           </h2>
           <p className="text-base text-white/50 max-w-2xl mx-auto">
             Evidence packet automation that meets regulatory standards
@@ -85,7 +85,8 @@ export function BentoFeatures() {
                 {countUp}%
               </motion.div>
               <p className="text-white/40 text-sm leading-relaxed mb-2">
-                of adverse action notices in production fail the CFPB specificity standard
+                of adverse action notices in production fail the CFPB specificity standard — a finding
+                category examiners already screen for.
               </p>
               <p className="text-white/30 text-sm">
                 Circular 2023-03 · Behavioral specificity required
@@ -112,7 +113,8 @@ export function BentoFeatures() {
                 Know what analysis is possible
               </h3>
               <p className="text-xs text-white/50 leading-relaxed">
-                Readiness scoring surfaces which statistical analyses can run on your current fields — and which are blocked — before you present to leadership.
+                Know which statistical analyses your current fields support before leadership or
+                examiners ask questions your data cannot answer.
               </p>
             </div>
           </motion.div>
@@ -159,7 +161,8 @@ export function BentoFeatures() {
               Disparity runs without an alert
             </h3>
             <p className="text-xs text-white/50 leading-relaxed">
-              Track how approval-rate disparity shifts across origination periods before it becomes a finding.
+              Catch approval-rate divergence across origination periods before it becomes an open
+              finding.
             </p>
           </motion.div>
 
@@ -182,7 +185,8 @@ export function BentoFeatures() {
               Aggregate by design
             </h3>
             <p className="text-xs text-white/50 leading-relaxed">
-              No raw applicant PII stored. Decision-level and cohort-level records only. Built for governance, not surveillance.
+              Maintain oversight without storing raw applicant PII — decision-level and cohort-level
+              records only.
             </p>
           </motion.div>
 
@@ -229,7 +233,8 @@ export function BentoFeatures() {
               Disparity at the four-fifths threshold
             </h3>
             <p className="text-sm text-white/50 leading-relaxed">
-              Approval-rate disparity and the disparate impact ratio calculated with plain-language labels alongside technical outputs.
+              Surface four-fifths threshold breaches with plain-language labels before they reach an
+              examination packet.
             </p>
           </motion.div>
 

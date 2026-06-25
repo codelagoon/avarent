@@ -1,5 +1,8 @@
+"use client";
+
 import { CTAWithTextMarquee } from "@/components/ui/cta-with-text-marquee";
 import { CAL_DATA } from "@/components/ui/cal-embed";
+import { openContactSalesModal } from "@/components/ui/contact-sales-modal";
 
 const marqueeItems = [
   "Credit Risk Teams",
@@ -14,14 +17,14 @@ const marqueeItems = [
 export function CTASection() {
   return (
     <CTAWithTextMarquee
-      title="See your exam readiness before the examiner does."
-      description="Request access to the evidence packet pilot. Get the structured analysis your team needs before anyone external asks for it."
-      primaryLabel="Join the Waitlist"
+      title="Know your regulatory risk before your next examination."
+      description="See how Avarent monitors lending decisions in real time and helps your team maintain continuous compliance."
+      primaryLabel="Schedule a Demo"
       primaryHref="#"
-      onPrimaryClick={() => window.dispatchEvent(new CustomEvent("open-waitlist"))}
-      secondaryLabel="Book a Call with the Founder"
+      primaryCalData={CAL_DATA}
+      secondaryLabel="Contact Sales"
       secondaryHref="#"
-      secondaryCalData={CAL_DATA}
+      onSecondaryClick={openContactSalesModal}
       marqueeItems={marqueeItems}
     />
   );

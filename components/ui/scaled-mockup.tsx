@@ -1,29 +1,32 @@
 "use client";
 
-import { useRef, useEffect, useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
-export function ScaledMockup({ designWidth, children }: { designWidth: number; children: ReactNode }) {
-  const outerRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
+interface ScaledMockupProps {
+  designWidth: number;
+  designHeight: number;
+  children: ReactNode;
+  className?: string;
+}
 
-  useEffect(() => {
-    const update = () => {
-      if (!outerRef.current) return;
-      setScale(Math.min(1, outerRef.current.offsetWidth / designWidth));
-    };
-    update();
-    const ro = new ResizeObserver(update);
-    if (outerRef.current) ro.observe(outerRef.current);
-    return () => ro.disconnect();
-  }, [designWidth]);
-
+export function ScaledMockup({
+  designWidth,
+  designHeight,
+  children,
+  className,
+}: ScaledMockupProps) {
   return (
-    <div ref={outerRef} className="relative w-full h-full flex items-center justify-center overflow-hidden">
+    <div
+      className={cn("w-full overflow-hidden [container-type:inline-size]", className)}
+      style={{ aspectRatio: `${designWidth} / ${designHeight}` }}
+    >
       <div
         style={{
           width: designWidth,
-          transformOrigin: "center center",
-          transform: `scale(${scale})`,
+          height: designHeight,
+          transformOrigin: "top left",
+          transform: `scale(calc(100cqw / ${designWidth}px))`,
         }}
       >
         {children}
